@@ -11,7 +11,8 @@ class ReadMorePlugin extends Omeka_Plugin_AbstractPlugin
             return $text;
         }
         $record = $args['record'];
-        $link = link_to($record, 'show', " (read more)", array(), array('read_more'=>'true') );
+        $url = url("items/show/{$record->id}?read_more=true");
+        $link = "<a href='$url'>(read more)</a>";
         $snippet = snippet($text, 0, 200, $link);        
         return $snippet;
     }
